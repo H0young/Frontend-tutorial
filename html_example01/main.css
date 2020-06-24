@@ -1,41 +1,44 @@
 body {
-  margin: 0;
-  padding: 0; /*초기화*/
+    margin: 0;
+    padding: 0;
+    /*초기화*/
 }
 
 .header {
-  background: yellowgreen;
+    background: white;
+    border-bottom: 1px solid lightgray;
 }
 
 .container {
-  background: tomato;
-  width: 980px;
-  margin: auto;
+    width: 980px;
+    margin: auto;
 }
 
 .container-left {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .logo {
-  float: left;
-  margin-right: 5px;
+    float: left;
+    margin-right: 5px;
 }
 
 .logo img {
-  display: block;
+    display: block;
 }
 
 .menu {
-  float: left;
+    float: left;
 }
 
 .menu-item {
-  float: left;
-  margin-right: 10px;
+    float: left;
+    padding: 8px 10px;
 }
 
 .clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
+    content: "";
+    display: block;
+    clear: both;
 }
