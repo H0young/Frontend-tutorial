@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    background: lightpink;
+    width: auto;
+    height: auto;
+}
