@@ -16,9 +16,9 @@ console.log(b)
 console.log(++b)
 b += b
 // 주석처리
-// not = !
-// and = &&
-// or = ||
+// 1. not = !
+// 2. and = &&
+// 3. or = ||
 
 const A = !true
 const B = true && true
