@@ -1,17 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Document</title>
-    <link rel="stylesheet" href="./main7.css">
-</head>
+    <link rel="stylesheet" href="./main7.css" />
+    <script src="./main.js" defer></script>
+  </head>
 
-<body>
-    <img srcset="images/food4.png 400w,
-    images/food5.png 700w,
-    images/food3.png 1000w" sizes="500px" src="./images/girl.png" alt="food4">
-
-</body>
-
+  <body>
+    <img
+      srcset="
+        images/food4.png  400w,
+        images/food5.png  700w,
+        images/food3.png 1000w
+      "
+      sizes="500px"
+      src="./images/girl.png"
+      alt="food4"
+    /><br />
+    <audio
+      src="https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3"
+      controls
+      muted
+    ></audio
+    ><br />
+    <video
+      src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm"
+      controls
+      muted
+      loop
+      poster="./images/highlightedStar.png"
+    ></video
+    ><br />
+    <figure>
+      <img src="./images/girl.png" alt="girl" />
+      <figcaption>image girl</figcaption>
+    </figure>
+    <p>my page</p>
+    <div>
+      <img src="./images/food5.png" alt="food5" />
+    </div>
+    <div>
+      <iframe
+        width="1206"
+        height="678"
+        src="https://www.youtube.com/embed/6wJepYuiznU"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <iframe
+        src="https://google.com"
+        frameborder="0"
+        width="70%"
+        height="400px"
+        style="border: 4px solid red;"
+        sandbox
+      ></iframe>
+    </div>
+    <canvas id="canvas" width="200" height="150"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "rgb(200, 0, 0)";
+      ctx.fillRect(10, 10, 50, 50);
+    </script>
+    <div id="my-name">Young!</div>
+    HIHIHIHI
+    <noscript>자바스크립트를 지원하지 않습니다.</noscript>
+  </body>
 </html>
