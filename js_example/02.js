@@ -23,7 +23,7 @@ const sum = add(1, 2)
 console.log(sum)
 
 // 객체
-console cat = {
+const cat = {
     name: '니콩',
     age: 5,
     alias: '콩'
@@ -52,15 +52,19 @@ const dog = {
 
 dog.say()
 
-// 특정 값 조회, 변경: getter, setter
+// 특정 값 조회, 변경: getter > 가져오는, setter > 넣는
+// 보안성, capculation
 
 const numbers = {
-    _a: 1,
+    _a: 1, // _지역변수
     _b: 2,
-    sum: 3,
+    sum: 0,
     calculate() {
         console.log('calculate')
         this.sum = this._a + this._b
+    },
+    get getSum() {
+        return this.sum
     },
     get a() {
         return this._a
@@ -75,8 +79,15 @@ const numbers = {
     set b(value) {
         this._b + value
         this.calculate()
+    },
+    set setSum(value) {
+        this.sum = this._a + this._b
     }
 }
+console.log("====================")
 console.log(numbers.sum)
+// numbers.sum = 100
+console.log(numbers.getSum)
+console.log(numbers.getSum)
 numbers.a = 5
 numbers.b = 9
