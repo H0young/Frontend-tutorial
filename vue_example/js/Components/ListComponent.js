@@ -1,11 +1,11 @@
 export default {
     template: '#list',
     props: ['data', 'type'],
-    computes: {
+    computed: {
         keywordType() {
             return this.type === 'keywords'
         },
-        HistoryType() {
+        historyType() {
             return this.type === 'history'
         }
     },
