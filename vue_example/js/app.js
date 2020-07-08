@@ -16,7 +16,7 @@ new Vue({
     selectedTab: "",
     keywords: [],
     history: [],
-    searchResult: [],
+    searchResult: []
   },
   components: {
     'search-form': FormComponent,

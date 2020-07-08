@@ -1,60 +1,78 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div>
+    <header>
+      <h2 class="container">검색</h2>
+    </header>
+    <div class="container">
+      <search-form v-bind:value="query" v-on:@submit="onSubmit" v-on:@reset="onReset"></search-form>
+    </div>
   </div>
 </template>
 
 <script>
+import SearchModel from "./models/SearchModel.js";
+import KeywordModel from "./models/KeywordModel.js";
+import HistoryModel from "./models/HistoryModel.js";
+
+import FormComponent from "./components/FormComponent.vue";
+
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      query: "", //입력 데이터 받아 저장, v-model: 양 방향
+      submitted: false,
+      tabs: ["추천 검색어", "최근 검색어"],
+      selectedTab: "",
+      keywords: [],
+      history: [],
+      searchResult: []
+    };
+  },
+  components: {
+    "search-form": FormComponent
+  },
+  methods: {
+    onSubmit(query) {
+      (this.query = query), this.search();
+    },
+    onReset(e) {
+      this.resetForm();
+    },
+    onClickTab(tab) {
+      this.selectedTab = tab;
+    },
+    onClickKeyword(keyword) {
+      this.query = keyword;
+      this.search();
+    },
+    onClickRemoveHistory(keyword) {
+      HistoryModel.remove(keyword);
+      this.fetchHistory();
+    },
+    fetchKeyword() {
+      KeywordModel.list().then(data => {
+        this.keywords = data;
+      });
+    },
+    fetchHistory() {
+      HistoryModel.list().then(data => {
+        this.history = data;
+      });
+    },
+    search(e) {
+      SearchModel.list().then(data => {
+        this.submitted = true;
+        this.searchResult = data;
+      });
+      HistoryModel.add(this.query);
+      this.fetchHistory();
+    },
+    resetForm(e) {
+      this.query = "";
+      this.submitted = false;
+      this.searchResult = [];
     }
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
