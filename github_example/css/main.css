@@ -6,6 +6,10 @@
     color: #333;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* BTN */
 .btn {
     height: 34px;
@@ -21,6 +25,7 @@
     cursor: pointer;
     box-sizing: border-box;
     position: relative;
+    color: #333;
 }
 
 .btn:hover::before {
@@ -85,10 +90,36 @@ header .inner {
 
 header .menu-group {
     display: flex;
+    align-items: center;
+    height: 100%;
 }
 
-header .logo {}
+header .logo {
+    margin-right: 1px;
+}
+
+header .logo a {
+    background: url(../img/logo.svg);
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-indent: -9999px;
+}
+
+header .logo a:hover {
+    background: url("../img/logo_on.svg");
+}
 
 header .main-menu {
     display: flex;
+}
+
+header .main-menu li a {
+    display: block;
+    padding: 10px;
+    color: #3c4146;
+}
+
+header .main-menu li a:hover {
+    color: #4078c5;
 }
