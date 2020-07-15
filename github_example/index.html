@@ -200,8 +200,8 @@
         function initMap() {
             const myLatLng = {
                 lat: 37.782293,
-                lng: -122.391240
-            }
+                lng: -122.391240,
+            };
             const map = new google.maps.Map(
                 document.getElementById('map'), {
                     center: myLatLng,
@@ -213,6 +213,7 @@
                 map: map,
                 title: "Github",
             });
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTQIlxBn5AfKGvsfJiormAE1esN3fcCkg&callback=initMap"
         async defer>
