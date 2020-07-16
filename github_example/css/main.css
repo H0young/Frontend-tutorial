@@ -90,7 +90,8 @@ a {
 }
 
 /* SUMMARY */
-.summary {}
+.summary {
+}
 
 .summary__title {
   font-size: 38px;
@@ -190,7 +191,7 @@ header .btn-group .sign-in {
   font-size: 14px;
 }
 
-#search+[type="submit"] {
+#search + [type="submit"] {
   display: none;
 }
 
@@ -337,8 +338,9 @@ header .sub-menu li a:hover {
   max-width: 1200px;
 }
 
-.section--feature .tiles ul {}
-
+/* Float을 사용한 방법 */
+.section--feature .tiles ul {
+}
 .section--feature .tiles li {
   padding: 34px 24px;
   text-align: center;
@@ -348,6 +350,20 @@ header .sub-menu li a:hover {
   float: left;
   width: 25%;
 }
+/* Grid를 사용한 방법 */
+/*
+  .section--feature .tiles ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .section--feature .tiles li {
+    padding: 34px 24px;
+    text-align: center;
+    line-height: 1.5;
+    border-right: 1px solid #e5e5e5;
+    box-sizing: border-box;
+  }
+*/
 
 .section--feature .tiles li:last-child {
   border-right: none;
@@ -371,7 +387,8 @@ header .sub-menu li a:hover {
 }
 
 /* WHERE IS */
-.section--where-is {}
+.section--where-is {
+}
 
 .section--where-is .inner {
   padding-top: 80px;
@@ -425,7 +442,8 @@ header .sub-menu li a:hover {
 }
 
 /* FOOTER */
-footer {}
+footer {
+}
 
 footer .inner {
   padding: 50px 0;
