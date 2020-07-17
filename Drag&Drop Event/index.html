@@ -1,15 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Drag&Drop Event</title>
 
+    <style>
+        #mi1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 273px;
+            left: 408px;
+            /* text-align: center;
+            line-height: 100px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(10deg)
+        }
+
+        #mi2 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 600px;
+            left: 640px;
+            /* text-align: center;
+            line-height: 100px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(340deg)
+        }
+
+        img {
+            position: absolute;
+            left: 1000px;
+            top: 10px;
+            filter: drop-shadow(5px 5px 5px #808080);
+            cursor: pointer;
+            z-index: 1000;
+            left: 1000px;
+            top: 10px;
+            width: 3.5%;
+        }
+    </style>
 
 </head>
 
 <body>
+    <img src="./postermimi.png" title="2020" id="postit">
+    <div id="mi1" class="droppable">mi</div>
+    <div id="mi2" class="droppable">mi</div>
+
+    <script>
+        let currentDroppable = null;
+
+        postit.onmousedown = function (event) {
+
+            document.body.appendChild(postit);
+
+            let shiftX = event.clientX - postit.getBoundingClientRect().left;
+            let shiftY = event.clientY - postit.getBoundingClientRect().top;
+
+            moveAt(event.pageX, event.pageY);
+
+            function moveAt(pageX, pageY) {
+                postit.style.left = pageX - shiftX + 'px';
+                postit.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+
+                postit.hidden = true
+                let elemBelow = document.elementFromPoint(event.clientX, event.clientY)
+                postit.hidden = false
+
+                if (!elemBelow) return
+
+                let droppableBelow = elemBelow.closest('.droppable')
+                if (currentDroppable != droppableBelow) {
+                    if (currentDroppable) {
+                        leaveDroppable(currentDroppable)
+                    }
+                    currentDroppable = droppableBelow
+                    if (currentDroppable) {
+                        enterDroppable(currentDroppable)
+                    }
+                }
+
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            postit.onmouseup = function () {
+                document.removeEventListener('mousemove', onMouseMove);
+                postit.onmouseup = null;
+                if (currentDroppable != null) location.href = "./1.html"
+            };
+
+        };
+
+        function enterDroppable(elem) {
+            elem.style.background = 'pink';
+        }
+
+        function leaveDroppable(elem) {
+            elem.style.background = '';
+        }
+
+        postit.ondragstart = function () {
+            return false;
+        };
+    </script>
 
 </body>
 

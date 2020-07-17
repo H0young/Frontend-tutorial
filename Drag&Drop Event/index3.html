@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>exhibition</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      h1{
+        font-size: 15px;
+      }
+      #mi{
+        position:absolute;
+        top: 273px; left: 408px;
+        transform: rotate(10deg)
+      }
+      #bar{
+        position:absolute;
+        top: 10px; left: 1000px;
+      }
+      #mii{
+        position:absolute;
+        top: 600px; left: 640px;
+        transform: rotate(340deg)
+      }
+      img{
+        position: absolute;
+        left: 1000px;
+        top: 10px;
+        filter: drop-shadow(5px 5px 5px #808080);
+        }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="window" id="window">
+    <div class="allcontent" id="allcontent">
+            <div id="mi">
+              <h1>mi</h1>
+            </div>
+            <div id="mii">
+              <h1>mi</h1>
+            </div>
+        <div id="bar">
+            <h1><a href="0.html" title="You found a hole!">-</a></h1>
+        </div>
+      <img src="images/home/postermimi.png" title="2020" style="cursor: pointer; z-index: 1000; left: 1000px; top: 10px;" width="3.5%" id="postit">
+    </div>
+    </div>
+
+
+
+    <script>
+        postit.onmousedown = function(event) {
+          postit.style.position = 'absolute';
+          postit.style.zIndex = 1000;
+          document.body.appendChild(postit);
+
+          moveAt(event.pageX, event.pageY);
+
+          function moveAt(pageX, pageY) {
+            postit.style.left = pageX - postit.offsetWidth / 2 + 'px';
+            postit.style.top = pageY - postit.offsetHeight / 2 + 'px';
+          }
+
+          function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+          }
+
+          document.addEventListener('mousemove', onMouseMove);
+
+          postit.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            postit.onmouseup = null;
+          };
+
+            function enterDroppable(elem) {
+            elem.style.background = 'pink';
+              }
+
+            function leaveDroppable(elem) {
+            elem.style.background = '';
+              }
+
+          postit.ondragstart = function() {
+            return false;
+          };
+        };
+      </script>
+
+  </body>
+</html>
