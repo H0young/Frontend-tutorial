@@ -84,11 +84,13 @@
                 if (!elemBelow) return
 
                 let droppableBelow = elemBelow.closest('.droppable')
+
                 if (currentDroppable != droppableBelow) {
                     if (currentDroppable) {
                         leaveDroppable(currentDroppable)
                     }
                     currentDroppable = droppableBelow
+
                     if (currentDroppable) {
                         enterDroppable(currentDroppable)
                     }
